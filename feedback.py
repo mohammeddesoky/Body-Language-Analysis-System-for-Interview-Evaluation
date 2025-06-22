@@ -100,31 +100,31 @@ def alarm(delay, time_, hand_on_face, head_pose_text, eye_text, emotion):
     
     if hand_on_face == False:
         time_[0] = time.time()
-        delay[0] = 30
+        delay[0] = 10
     if time.time() - time_[0] >= delay[0]:
         print(f"Hand on face detected for {delay[0]//60}:{delay[0]%60} Minute.")
-        delay[0] += 15
+        delay[0] += 5
         
     if head_pose_text == "Looking Forward": 
         time_[1] = time.time()
-        delay[1] = 30
+        delay[1] = 10
     if time.time() - time_[1] >= delay[1]:
         print(f"No Head movement detected for {delay[1]//60}:{delay[1]%60} Minute.")
-        delay[1] += 15
+        delay[1] += 5
 
     if eye_text == "Eye Center": 
         time_[2] = time.time()
-        delay[2] = 30
+        delay[2] = 10
     if time.time() - time_[2] >= delay[2]:
         print(f"No Eye Center detected for {delay[2]//60}:{delay[2]%60} Minute.")
-        delay[2] += 15
+        delay[2] += 5
 
     if emotion in ['Neutral', 'Happiness']: 
         time_[3] = time.time()
-        delay[3] = 30
+        delay[3] = 10
     if time.time() - time_[3] >= delay[3]:
         print(f"No emotion detected for {delay[3]//60}:{delay[3]%60} Minute.")
-        delay[3] += 15
+        delay[3] += 5
 
     return time_
 
@@ -142,7 +142,7 @@ def main(frame_skip=5):
     seconds = []
 
     time_ = [time.time(), time.time(), time.time(), time.time()]
-    delay = [30, 30, 30, 30]
+    delay = [10, 10, 10, 10]
 
     models = initialize_models()
     cap = cv2.VideoCapture(1)
